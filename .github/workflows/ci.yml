@@ -187,6 +187,7 @@ jobs:
         if: ${{ always() && !cancelled() }}
         with:
           upload-report: true
+          upload-successful-reports: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
           test-outcome: ${{ steps.run-tests.outcome }}
 
