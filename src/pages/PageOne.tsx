@@ -1,33 +1,33 @@
 import React from 'react';
-import { css } from '@emotion/css';
-import { GrafanaTheme2 } from '@grafana/data';
-import { LinkButton, useStyles2 } from '@grafana/ui';
+import { Box, Typography, Card, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { prefixRoute } from '../utils/utils.routing';
 import { ROUTES } from '../constants';
 import { testIds } from '../components/testIds';
 import { PluginPage } from '@grafana/runtime';
 
 function PageOne() {
-  const s = useStyles2(getStyles);
-
   return (
     <PluginPage>
-      <div data-testid={testIds.pageOne.container}>
-        This is page one.
-        <div className={s.marginTop}>
-          <LinkButton data-testid={testIds.pageOne.navigateToFour} href={prefixRoute(ROUTES.Four)}>
-            Full-width page example
-          </LinkButton>
-        </div>
-      </div>
+      <Card sx={{ p: 3 }}>
+        <Box data-testid={testIds.pageOne.container}>
+          <Typography variant="h5" gutterBottom>
+            This is page one.
+          </Typography>
+          <Box sx={{ mt: 2 }}>
+            <Button
+              component={Link}
+              to={prefixRoute(ROUTES.Four)}
+              variant="contained"
+              data-testid={testIds.pageOne.navigateToFour}
+            >
+              Full-width page example
+            </Button>
+          </Box>
+        </Box>
+      </Card>
     </PluginPage>
   );
 }
 
 export default PageOne;
-
-const getStyles = (theme: GrafanaTheme2) => ({
-  marginTop: css`
-    margin-top: ${theme.spacing(2)};
-  `,
-});
