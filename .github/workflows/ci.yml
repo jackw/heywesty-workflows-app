@@ -217,4 +217,3 @@ jobs:
         uses: grafana/plugin-actions/playwright-gh-pages/deploy-report-pages@jackw/update-workflows
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-
