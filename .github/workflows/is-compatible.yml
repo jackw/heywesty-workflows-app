@@ -16,7 +16,7 @@ jobs:
       - name: Build plugin
         run: npm run build
       - name: Compatibility check
-        uses: grafana/plugin-actions/is-compatible@v1
+        uses: grafana/plugin-actions/is-compatible@jackw/update-workflows
         with:
           module: './src/module.tsx'
           comment-pr: 'yes'
