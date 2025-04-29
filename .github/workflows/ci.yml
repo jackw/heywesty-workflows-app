@@ -186,7 +186,7 @@ jobs:
         uses: grafana/plugin-actions/playwright-gh-pages/upload-report-artifacts@jackw/update-workflows
         if: ${{ always() && !cancelled() }}
         with:
-          upload-report: false
+          upload-report: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
           test-outcome: ${{ steps.run-tests.outcome }}
 
@@ -217,3 +217,4 @@ jobs:
         uses: grafana/plugin-actions/playwright-gh-pages/deploy-report-pages@jackw/update-workflows
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
