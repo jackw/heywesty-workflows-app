@@ -1,6 +1,10 @@
 name: Latest Grafana API compatibility check
 on: [pull_request]
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   compatibilitycheck:
     runs-on: ubuntu-latest
@@ -16,4 +20,10 @@ jobs:
       - name: Build plugin
         run: npm run build
       - name: Compatibility check
-        run: npx --yes @grafana/levitate@latest is-compatible --path $(find ./src -type f \( -name "module.ts" -o -name "module.tsx" \)) --target @grafana/data,@grafana/ui,@grafana/runtime
+        uses: grafana/plugin-actions/is-compatible@jackw/update-workflows
+        with:
+          module: './src/module.tsx'
+          comment-pr: 'yes'
+          fail-if-incompatible: 'no'
+      # - name: Compatibility check
+      #   run: npx --yes @grafana/levitate@latest is-compatible --path $(find ./src -type f \( -name "module.ts" -o -name "module.tsx" \)) --target @grafana/data,@grafana/ui,@grafana/runtime
